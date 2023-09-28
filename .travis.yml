@@ -6,13 +6,9 @@ services:
   - docker
 
 before_install:
-  - ehco "strat creating an image with dockerfile"
-  - docker buidl -t tkddnjs5652/docker-react-app -f Dockerfile.dev .
+  - docker build -t tkddnjs5652/docker-react-app -f Dockerfile.dev .
 
 script:
   - docker run -e CI=true tkddnjs5652/docker-react-app npm run test -- --coverage
-
-after_success:
-  - echo "Test success"
 
 
